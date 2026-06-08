@@ -1,0 +1,8 @@
+[package]
+name = "arc-node-consensus-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for Arc consensus node CLI support."
+include = ["Cargo.toml", "src/lib.rs"]

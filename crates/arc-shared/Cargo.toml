@@ -1,0 +1,8 @@
+[package]
+name = "arc-shared"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for shared Arc utilities."
+include = ["Cargo.toml", "src/lib.rs"]

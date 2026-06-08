@@ -1,0 +1,8 @@
+[package]
+name = "arc-execution-payload"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for Arc execution payload support."
+include = ["Cargo.toml", "src/lib.rs"]

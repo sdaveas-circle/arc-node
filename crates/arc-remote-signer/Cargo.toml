@@ -1,0 +1,8 @@
+[package]
+name = "arc-remote-signer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for Arc remote signing support."
+include = ["Cargo.toml", "src/lib.rs"]

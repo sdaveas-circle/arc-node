@@ -1,0 +1,8 @@
+[package]
+name = "arc-evm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for Arc EVM support."
+include = ["Cargo.toml", "src/lib.rs"]

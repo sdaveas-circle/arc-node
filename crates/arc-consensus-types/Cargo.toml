@@ -1,0 +1,8 @@
+[package]
+name = "arc-consensus-types"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for Arc consensus and Engine API shared types."
+include = ["Cargo.toml", "src/lib.rs"]

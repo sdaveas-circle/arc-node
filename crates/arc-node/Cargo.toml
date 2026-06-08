@@ -1,0 +1,8 @@
+[package]
+name = "arc-node"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Placeholder package for Arc Node, Circle's L1 blockchain node software."
+include = ["Cargo.toml", "src/lib.rs"]
