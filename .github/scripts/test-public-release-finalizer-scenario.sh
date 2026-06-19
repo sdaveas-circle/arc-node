@@ -264,6 +264,22 @@ wait_for_check_success() {
   die "Timed out waiting for ${check_name} on PR #${pr}"
 }
 
+run_release_finalizer() {
+  local mode="$1"
+  local merge_sha="${2:-}"
+  local json body
+
+  json="$(pr_json "${PUBLIC_RELEASE_PR}")"
+  body="$(jq -r '.body // ""' <<< "${json}")"
+
+  RELEASE_NAMESPACE=auto \
+    PR_BODY="${body}" \
+    PR_BASE_REF="${PUBLIC_MAIN_BRANCH}" \
+    PR_HEAD_REF="${PUBLIC_RELEASE_HEAD}" \
+    MERGE_COMMIT_SHA="${merge_sha}" \
+    bash .github/scripts/finalize-release.sh "${mode}"
+}
+
 wait_for_final_refs() {
   local expected_sha="$1"
   local branch_sha tag_sha
@@ -316,11 +332,11 @@ run_scenario() {
 
   ensure_release_label
   label_release_pr
-  wait_for_check_success "${PUBLIC_RELEASE_PR}" "Validate release metadata"
+  run_release_finalizer validate
 
   release_sha="$(merge_public_pr "${PUBLIC_RELEASE_PR}" "release")"
   note "Release PR merge commit: ${release_sha}"
-  wait_for_check_success "${PUBLIC_RELEASE_PR}" "Create release branch and tag"
+  run_release_finalizer finalize "${release_sha}"
   wait_for_final_refs "${release_sha}"
 
   snapshot_production_refs "${after}"
