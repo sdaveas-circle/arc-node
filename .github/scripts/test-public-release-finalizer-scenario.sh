@@ -328,7 +328,6 @@ run_scenario() {
   note "Finalizer PR merge commit: ${finalizer_sha}"
   wait_for_public_file ".github/workflows/finalize-release.yaml"
   wait_for_public_file ".github/scripts/finalize-release.sh"
-  wait_for_public_file ".github/scripts/test-public-release-finalizer-scenario.sh"
 
   ensure_release_label
   label_release_pr
