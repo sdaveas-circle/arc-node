@@ -280,6 +280,10 @@ run_release_finalizer() {
     bash .github/scripts/finalize-release.sh "${mode}"
 }
 
+configure_public_origin() {
+  git remote set-url origin "https://x-access-token:${PUBLIC_TOKEN}@github.com/${PUBLIC_REPO}.git"
+}
+
 wait_for_final_refs() {
   local expected_sha="$1"
   local branch_sha tag_sha
@@ -331,6 +335,7 @@ run_scenario() {
 
   ensure_release_label
   label_release_pr
+  configure_public_origin
   run_release_finalizer validate
 
   release_sha="$(merge_public_pr "${PUBLIC_RELEASE_PR}" "release")"
